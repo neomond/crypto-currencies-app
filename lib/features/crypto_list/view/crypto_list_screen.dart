@@ -26,6 +26,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text('Crypto Currencies List'),
@@ -44,6 +45,21 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                   return CryptoCoinTyle(coin: coin);
                 },
               );
+            }
+            if (state is CryptoListLoadingFailure) {
+              return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Something went wrong',
+                      style: theme.textTheme.headlineMedium,
+                    ),
+                    Text(
+                      'Please try again later',
+                      style: theme.textTheme.labelSmall?.copyWith(fontSize: 16),
+                    ),
+                  ]);
             }
             return const Center(child: CircularProgressIndicator());
           },
