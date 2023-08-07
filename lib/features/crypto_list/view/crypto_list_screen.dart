@@ -13,13 +13,10 @@ class CryptoListScreen extends StatefulWidget {
 }
 
 class _CryptoListScreenState extends State<CryptoListScreen> {
-  // List<CryptoCoin>? _cryptoCoinsList;
-
   final _cryptoListBloc = CryptoListBloc(GetIt.I<AbstractCoinsRepository>());
 
   @override
   void initState() {
-    // _loadCryptoCoins();
     _cryptoListBloc.add(LoadCryptoList());
     super.initState();
   }
@@ -40,7 +37,6 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                 itemCount: state.coinsList.length,
                 separatorBuilder: (context, i) => const Divider(),
                 itemBuilder: (context, i) {
-                  // const coinName = 'Bitcoin';
                   final coin = state.coinsList[i];
                   return CryptoCoinTyle(coin: coin);
                 },
@@ -63,24 +59,6 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
             }
             return const Center(child: CircularProgressIndicator());
           },
-        )
-        //(_cryptoCoinsList == null)
-        //     ? const Center(child: CircularProgressIndicator())
-        //     : ListView.separated(
-        //         padding: const EdgeInsets.only(top: 16),
-        //         itemCount: _cryptoCoinsList!.length,
-        //         separatorBuilder: (context, i) => const Divider(),
-        //         itemBuilder: (context, i) {
-        //           // const coinName = 'Bitcoin';
-        //           final coin = _cryptoCoinsList![i];
-        //           return CryptoCoinTyle(coin: coin);
-        // },
-        // ),
-        );
+        ));
   }
-
-  // Future<void> _loadCryptoCoins() async {
-  //   _cryptoCoinsList = await GetIt.I<AbstractCoinsRepository>().getCoinsList();
-  //   setState(() {});
-  // }
 }
