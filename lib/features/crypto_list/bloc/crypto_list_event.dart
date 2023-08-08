@@ -7,6 +7,5 @@ class LoadCryptoList extends CryptoListEvent {
   final Completer? completer;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [completer];
 }

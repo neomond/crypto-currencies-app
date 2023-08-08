@@ -33,7 +33,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
         body: RefreshIndicator(
           onRefresh: () async {
             final completer = Completer();
-            _cryptoListBloc.add(LoadCryptoList(completer: completer));
+            _cryptoListBloc.add(LoadCryptoList(completer));
             return completer.future;
           },
           child: BlocBuilder<CryptoListBloc, CryptoListState>(
